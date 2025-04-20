@@ -3,15 +3,8 @@ import projects from "@/app/data/portfolio";
 import Image from "next/image";
 import Link from "next/link";
 
-// Ensure 'slug' is passed correctly and typed
-interface ProjectDetailPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  // Find the project using the slug parameter
+// Hapus pengetikan manual untuk params karena Next.js sudah menangani ini di App Directory
+export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) return notFound();
