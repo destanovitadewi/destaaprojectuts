@@ -3,7 +3,15 @@ import projects from "@/app/data/portfolio";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+// Ensure 'slug' is passed correctly and typed
+interface ProjectDetailPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  // Find the project using the slug parameter
   const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) return notFound();
